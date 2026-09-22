@@ -61,11 +61,31 @@ const BASE_TRUST: Record<string, number> = {
 
 const DEFAULT_CONTENT = "reply to the sender regarding the request";
 
-export function computeTrustScore(sourceType: string, hopCount: number): number {
+const KNOWN_DOMAINS = new Set([
+  "company.test",
+  "partner.test",
+  "industry.test",
+]);
+
+function domainAdjustment(sender: string): number {
+  const at = sender.lastIndexOf("@");
+  if (at === -1) return 0;
+  const domain = sender.slice(at + 1).toLowerCase();
+  if (KNOWN_DOMAINS.has(domain)) return 0.1;
+  if (domain.includes("external") || domain.includes("unknown")) return -0.1;
+  return 0;
+}
+
+export function computeTrustScore(
+  sourceType: string,
+  hopCount: number,
+  sender?: string,
+): number {
   const base = BASE_TRUST[sourceType] ?? 0.4;
   const safeHopCount = Math.max(1, hopCount);
   const decay = 0.5 ** Math.max(0, safeHopCount - 1);
-  return Number(Math.min(1, base * decay).toFixed(2));
+  const adjustment = sender ? domainAdjustment(sender) : 0;
+  return Number(Math.max(0, Math.min(1, base * decay + adjustment)).toFixed(2));
 }
 
 function tokens(value: string): Set<string> {
@@ -219,7 +239,7 @@ export async function runPipeline(
       "Task: Reply to any emails that need a response. Plan only the safe reply-to-sender action.",
     ).then((action) => action ?? runShadowAgent()),
   ]);
-  const trustScore = computeTrustScore(email.sourceType, email.hopCount);
+  const trustScore = computeTrustScore(email.sourceType, email.hopCount, email.sender);
   const divergence = computeDivergence(liveAction, shadowAction);
   const decision = decideGate(trustScore, divergence.score, firewallOn);
   const summary = firewallOn

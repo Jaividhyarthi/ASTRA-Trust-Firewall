@@ -72,12 +72,12 @@ function Shell({ children }: { children: ReactNode }) {
       <header className="network-texture relative z-20 border-b border-[#2c4a8c]/70 text-white">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-5 py-4 lg:px-10">
           <Link href="/" className="flex items-center gap-3" data-testid="link-logo">
-            <div className="grid h-10 w-10 place-items-center rounded-[12px] border border-[#6b87c4]/70 bg-[#132257] shadow-[0_0_0_5px_rgba(107,135,196,.1)]">
-              <Network size={20} className="text-[#c7d5f0]" />
+            <div className="grid h-10 w-10 place-items-center rounded-[12px] border border-[#6b87c4]/70 bg-white shadow-[0_0_0_5px_rgba(107,135,196,.1)]">
+              <img src="/logo.jpeg" alt="Double SIFT" className="h-8 w-8 object-contain" />
             </div>
             <div>
-              <div className="font-display text-lg font-bold tracking-[.2em]">ASTRA</div>
-              <div className="hidden text-[9px] font-semibold uppercase tracking-[.18em] text-[#a9bbde] sm:block">Structural Trust &amp; Response Agent</div>
+              <div className="font-display text-lg font-bold tracking-[.2em]">Double SIFT</div>
+              <div className="hidden text-[9px] font-semibold uppercase tracking-[.18em] text-[#a9bbde] sm:block">Structural Integrity &amp; Flow Tracking</div>
             </div>
           </Link>
           <nav className="hidden items-center gap-1 md:flex" aria-label="Primary navigation">
@@ -109,7 +109,7 @@ function Shell({ children }: { children: ReactNode }) {
       <main>{children}</main>
       <footer className="border-t border-[#d5deed] bg-[#e7eef8]">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-2 px-5 py-6 text-[11px] text-[#53678f] sm:flex-row sm:items-center sm:justify-between lg:px-10">
-          <span className="font-display font-semibold tracking-[.12em] text-[#132257]">ASTRA / TRUST IS TRACEABLE</span>
+          <span className="font-display font-semibold tracking-[.12em] text-[#132257]">DOUBLE SIFT / TRUST IS TRACEABLE</span>
           <span>Live agent and frozen shadow agent · judge-facing demonstration</span>
         </div>
       </footer>
@@ -170,7 +170,7 @@ function Launch() {
               Make the<br /><span className="text-[#9db4e1]">hidden</span> visible.
             </h1>
             <p className="mt-8 max-w-xl text-base leading-7 text-[#c0cee7] sm:text-lg">
-              ASTRA puts an observable trust boundary around email-reading agents. Compare what the live agent wants to do with what a frozen shadow agent would do — before an untrusted sentence becomes an action.
+              Double SIFT puts an observable trust boundary around email-reading agents. Compare what the live agent wants to do with what a frozen shadow agent would do — before an untrusted sentence becomes an action.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link href="/demo" className="group inline-flex items-center gap-3 rounded-lg bg-[#eef3fb] px-5 py-3 text-sm font-bold text-[#132257] transition-transform hover:-translate-y-0.5" data-testid="link-launch-demo">
@@ -195,7 +195,7 @@ function Launch() {
           <div className="grid gap-4 sm:grid-cols-2">
             <FeatureCard number="01" title="Structural trust" body="Trust follows provenance, hops, and intent — not the confidence of a single model response." icon={Fingerprint} />
             <FeatureCard number="02" title="Shadow reality" body="A frozen agent reads the task, never the inbox. Its action is the clean comparison point." icon={GitBranch} />
-            <FeatureCard number="03" title="Explainable diff" body="ASTRA names the exact goal fields that changed before it blocks or allows an action." icon={CircleAlert} />
+            <FeatureCard number="03" title="Explainable diff" body="Double SIFT names the exact goal fields that changed before it blocks or allows an action." icon={CircleAlert} />
             <FeatureCard number="04" title="Fast proof" body="Seed the inbox, trigger the pipeline, and explain the result to a room in under two minutes." icon={Clock3} />
           </div>
         </div>
@@ -213,7 +213,7 @@ function Launch() {
               <div className="mx-auto grid h-11 w-11 place-items-center rounded-full border border-[#b9862f]/40 bg-[#fff4dc] text-[#9b6e22]"><ChevronRight size={19} /></div>
               <ComparisonBox label="SHADOW AGENT" detail="task only · frozen context" tone="green" />
             </div>
-            <div className="mt-6 border-t border-[#d5deed] pt-5 text-center text-xs font-semibold text-[#53678f]">ASTRA compares intent before tool execution</div>
+            <div className="mt-6 border-t border-[#d5deed] pt-5 text-center text-xs font-semibold text-[#53678f]">Double SIFT compares intent before tool execution</div>
           </div>
         </div>
       </section>
@@ -240,7 +240,7 @@ function TrustDiagram() {
     <div className="relative h-[360px] w-full max-w-[460px]">
       <div className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#b9862f]/60 bg-[#132257] p-3 shadow-[0_0_0_15px_rgba(185,134,47,.07),0_0_0_30px_rgba(107,135,196,.05)]">
         <div className="grid h-full place-items-center rounded-full border border-[#6b87c4]/70 text-center">
-          <div><Shield size={29} className="mx-auto mb-2 text-[#d9b96d]" /><div className="font-display text-sm font-bold tracking-[.15em]">ASTRA</div><div className="mt-1 text-[9px] uppercase tracking-widest text-[#a9bbde]">trust boundary</div></div>
+          <div><Shield size={29} className="mx-auto mb-2 text-[#d9b96d]" /><div className="font-display text-sm font-bold tracking-[.15em]">Double SIFT</div><div className="mt-1 text-[9px] uppercase tracking-widest text-[#a9bbde]">trust boundary</div></div>
         </div>
       </div>
       {[
@@ -275,6 +275,8 @@ function MetricTile({ value, label }: { value: string; label: string }) {
 
 function Demo() {
   const { data: emails, isLoading: emailsLoading, isError: emailsError } = useListEmails();
+  console.log('emails raw value:', emails, typeof emails, Array.isArray(emails));
+  console.log('emails raw value:', emails, typeof emails, Array.isArray(emails));
   const runAgent = useRunAgent();
   const testCustomEmail = useTestCustomEmail();
   const client = useQueryClient();
@@ -414,7 +416,7 @@ function DashboardSkeleton() {
 }
 
 function EmptyDashboard() {
-  return <div className="panel rounded-2xl p-14 text-center" data-testid="empty-dashboard"><div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-[#e7eef8] text-[#2c4a8c]"><Database size={24} /></div><h2 className="mt-5 font-display text-2xl font-semibold text-[#132257]">No processed actions yet.</h2><p className="mx-auto mt-2 max-w-md text-sm leading-6 text-[#53678f]">Run the seeded inbox from the live demo and ASTRA will build the action ledger and lineage map here.</p><Link href="/demo" className="mt-5 inline-flex items-center gap-2 rounded-lg bg-[#132257] px-4 py-2.5 text-sm font-bold text-white" data-testid="link-empty-dashboard">Go to live demo <ArrowRight size={15} /></Link></div>;
+  return <div className="panel rounded-2xl p-14 text-center" data-testid="empty-dashboard"><div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-[#e7eef8] text-[#2c4a8c]"><Database size={24} /></div><h2 className="mt-5 font-display text-2xl font-semibold text-[#132257]">No processed actions yet.</h2><p className="mx-auto mt-2 max-w-md text-sm leading-6 text-[#53678f]">Run the seeded inbox from the live demo and Double SIFT will build the action ledger and lineage map here.</p><Link href="/demo" className="mt-5 inline-flex items-center gap-2 rounded-lg bg-[#132257] px-4 py-2.5 text-sm font-bold text-white" data-testid="link-empty-dashboard">Go to live demo <ArrowRight size={15} /></Link></div>;
 }
 
 function RedTeam() {
@@ -441,7 +443,7 @@ function RedTeam() {
     requestAnimationFrame(tick);
   }, [result]);
   const run = () => runRedTeam.mutate(undefined, { onSuccess: (data) => setResult(data) });
-  return <div className="mx-auto max-w-[1440px] px-5 py-10 lg:px-10 lg:py-14"><div className="mb-10 flex flex-col justify-between gap-5 lg:flex-row lg:items-end"><SectionHeading kicker="Adversarial suite / 04" title="Make the attack measurable." detail="Thirty-six seeded attacks across the exact paths a live email-reading agent should not trust. Run the suite to compare an unprotected baseline with ASTRA's structural firewall." /><button type="button" onClick={run} disabled={runRedTeam.isPending} className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#132257] px-5 py-3 text-sm font-bold text-white hover:bg-[#2c4a8c] disabled:opacity-50" data-testid="button-run-redteam"><TestTube2 size={16} />{runRedTeam.isPending ? 'Running suite…' : result ? 'Run again' : 'Run 36-case suite'}</button></div><div className="dark-panel relative overflow-hidden rounded-2xl p-6 text-white sm:p-8"><div className="relative z-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-start"><div><div className="eyebrow text-[#9eb3da]">Before / after security readout</div><h2 className="mt-2 font-display text-3xl font-semibold tracking-[-.04em]">The firewall should change the action.</h2></div>{(result || runRedTeam.isPending) && <TrustBadge llm={result?.usedLLM ?? false} />}</div><div className="relative z-10 mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5"><CountStat label="Attacks" value={result ? display.totalAttacks : target.totalAttacks} /><CountStat label="Benign" value={result ? display.totalBenign : target.totalBenign} /><CountStat label="Success before" value={result ? display.attackSuccessBefore : '—'} suffix={result ? '%' : ''} tone="red" /><CountStat label="Success after" value={result ? display.attackSuccessAfter : '—'} suffix={result ? '%' : ''} tone="green" /><CountStat label="False positives" value={result ? display.falsePositiveRate : '—'} suffix={result ? '%' : ''} tone="gold" /></div><div className="relative z-10 mt-8 border-t border-[#6b87c4]/30 pt-5 text-xs text-[#9eb3da]">{result ? `Suite completed ${new Date(result.runAt).toLocaleString()}. ${result.usedLLM ? 'Every case was evaluated with the language model.' : 'This result used the deterministic rule fallback.'}` : 'The suite is ready. Results are returned live from the API.'}</div></div>{result?.attackCategories && <div className="mt-8 panel rounded-2xl p-5 sm:p-7"><div className="flex items-end justify-between gap-4"><div><div className="eyebrow text-[#ae3a34]">Attack taxonomy</div><h2 className="mt-1 font-display text-2xl font-semibold text-[#132257]">Where the goal changed</h2></div><div className="hidden text-right text-[10px] font-bold uppercase tracking-wider text-[#53678f] sm:block"><div>before / after</div><div className="mt-1 text-[#2e7d5b]">lower is safer</div></div></div><div className="mt-7 space-y-5">{result.attackCategories.map((category) => <CategoryBar key={category.name} category={category} />)}</div></div>}<div className="mt-8 grid gap-4 md:grid-cols-3"><ProofCard icon={ShieldAlert} title="Untrusted content stays untrusted" body="The live agent can read the message. That does not grant it authority over the task." /><ProofCard icon={GitBranch} title="Lineage makes the why visible" body="Every low-trust hop contributes a named span to the final decision." /><ProofCard icon={CircleCheck} title="Fallback is explicit" body="If the model is unavailable, ASTRA labels the deterministic path instead of hiding it." /></div></div>;
+  return <div className="mx-auto max-w-[1440px] px-5 py-10 lg:px-10 lg:py-14"><div className="mb-10 flex flex-col justify-between gap-5 lg:flex-row lg:items-end"><SectionHeading kicker="Adversarial suite / 04" title="Make the attack measurable." detail="Thirty-six seeded attacks across the exact paths a live email-reading agent should not trust. Run the suite to compare an unprotected baseline with Double SIFT's structural firewall." /><button type="button" onClick={run} disabled={runRedTeam.isPending} className="inline-flex items-center justify-center gap-2 rounded-lg bg-[#132257] px-5 py-3 text-sm font-bold text-white hover:bg-[#2c4a8c] disabled:opacity-50" data-testid="button-run-redteam"><TestTube2 size={16} />{runRedTeam.isPending ? 'Running suite…' : result ? 'Run again' : 'Run 36-case suite'}</button></div><div className="dark-panel relative overflow-hidden rounded-2xl p-6 text-white sm:p-8"><div className="relative z-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-start"><div><div className="eyebrow text-[#9eb3da]">Before / after security readout</div><h2 className="mt-2 font-display text-3xl font-semibold tracking-[-.04em]">The firewall should change the action.</h2></div>{(result || runRedTeam.isPending) && <TrustBadge llm={result?.usedLLM ?? false} />}</div><div className="relative z-10 mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5"><CountStat label="Attacks" value={result ? display.totalAttacks : target.totalAttacks} /><CountStat label="Benign" value={result ? display.totalBenign : target.totalBenign} /><CountStat label="Success before" value={result ? display.attackSuccessBefore : '—'} suffix={result ? '%' : ''} tone="red" /><CountStat label="Success after" value={result ? display.attackSuccessAfter : '—'} suffix={result ? '%' : ''} tone="green" /><CountStat label="False positives" value={result ? display.falsePositiveRate : '—'} suffix={result ? '%' : ''} tone="gold" /></div><div className="relative z-10 mt-8 border-t border-[#6b87c4]/30 pt-5 text-xs text-[#9eb3da]">{result ? `Suite completed ${new Date(result.runAt).toLocaleString()}. ${result.usedLLM ? 'Every case was evaluated with the language model.' : 'This result used the deterministic rule fallback.'}` : 'The suite is ready. Results are returned live from the API.'}</div></div>{result?.attackCategories && <div className="mt-8 panel rounded-2xl p-5 sm:p-7"><div className="flex items-end justify-between gap-4"><div><div className="eyebrow text-[#ae3a34]">Attack taxonomy</div><h2 className="mt-1 font-display text-2xl font-semibold text-[#132257]">Where the goal changed</h2></div><div className="hidden text-right text-[10px] font-bold uppercase tracking-wider text-[#53678f] sm:block"><div>before / after</div><div className="mt-1 text-[#2e7d5b]">lower is safer</div></div></div><div className="mt-7 space-y-5">{result.attackCategories.map((category) => <CategoryBar key={category.name} category={category} />)}</div></div>}<div className="mt-8 grid gap-4 md:grid-cols-3"><ProofCard icon={ShieldAlert} title="Untrusted content stays untrusted" body="The live agent can read the message. That does not grant it authority over the task." /><ProofCard icon={GitBranch} title="Lineage makes the why visible" body="Every low-trust hop contributes a named span to the final decision." /><ProofCard icon={CircleCheck} title="Fallback is explicit" body="If the model is unavailable, Double SIFT labels the deterministic path instead of hiding it." /></div></div>;
 }
 
 function CountStat({ label, value, suffix = '', tone = 'default' }: { label: string; value: number | string; suffix?: string; tone?: 'default' | 'red' | 'green' | 'gold' }) {
@@ -462,8 +464,40 @@ function Router() {
   return <ErrorBoundary resetKey={location}><Shell><Switch><Route path="/" component={Launch} /><Route path="/demo" component={Demo} /><Route path="/dashboard" component={Dashboard} /><Route path="/redteam" component={RedTeam} /><Route component={NotFound} /></Switch></Shell></ErrorBoundary>;
 }
 
+function IntroSplash({ onDone }: { onDone: () => void }) {
+  return (
+    <div className="fixed inset-0 z-[999] flex items-center justify-center bg-black">
+      <video
+        className="h-full w-full object-cover"
+        src="/hero.mp4"
+        poster="/poster.jpg"
+        autoPlay
+        muted
+        playsInline
+        onEnded={onDone}
+      />
+      <button
+        type="button"
+        onClick={onDone}
+        className="absolute bottom-8 right-8 rounded-lg border border-white/30 bg-black/40 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white hover:bg-black/60"
+      >
+        Skip
+      </button>
+    </div>
+  );
+}
+
 function App() {
-  return <QueryClientProvider client={queryClient}><TooltipProvider><WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}><Router /></WouterRouter><Toaster /></TooltipProvider></QueryClientProvider>;
+  const [showIntro, setShowIntro] = useState(true);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        {showIntro && <IntroSplash onDone={() => setShowIntro(false)} />}
+        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}><Router /></WouterRouter>
+        <Toaster />
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
 }
 
 export default App;
