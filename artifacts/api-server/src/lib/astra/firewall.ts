@@ -183,14 +183,14 @@ async function openAiAction(system: string, user: string): Promise<AgentAction |
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) return null;
   try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
+        model: "llama-3.3-70b-versatile",
         temperature: 0,
         response_format: { type: "json_object" },
         messages: [
@@ -199,7 +199,11 @@ async function openAiAction(system: string, user: string): Promise<AgentAction |
         ],
       }),
     });
-    if (!response.ok) return null;
+    if (!response.ok) {
+      const errText = await response.text();
+      console.error("[Groq API error]", response.status, errText);
+      return null;
+    }
     const payload = (await response.json()) as {
       choices?: Array<{ message?: { content?: string } }>;
     };
@@ -214,7 +218,8 @@ async function openAiAction(system: string, user: string): Promise<AgentAction |
       return null;
     }
     return { tool: parsed.tool, recipient: parsed.recipient, content: parsed.content };
-  } catch {
+  } catch (err) {
+    console.error("[Groq fetch failed]", err);
     return null;
   }
 }
